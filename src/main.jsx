@@ -59,9 +59,6 @@ function App() {
 
   const sayYes = () => {
     setAccepted(true);
-    setTimeout(() => {
-      window.location.href = GENESIS_URL;
-    }, 1800);
   };
 
   const copyUid = async () => {
