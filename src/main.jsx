@@ -71,8 +71,16 @@ function App() {
         source: window.location.href,
         userAgent: navigator.userAgent
       });
+
       setAccepted(true);
-      const message = "💕 SHE SAID YES!!!\\n\\nYour girlfriend has officially accepted the proposal. 😂❤️\\n\\nGenesis setup is next.";\n      const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;\n      window.open(whatsappUrl, "_blank", "noopener,noreferrer");\n      setTimeout(() => { window.location.href = GENESIS_URL; }, 1800);
+
+      const message = "💕 SHE SAID YES!!!\n\nYour girlfriend has officially accepted the proposal. 😂❤️\n\nGenesis setup is next.";
+      const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+
+      setTimeout(() => {
+        window.location.href = GENESIS_URL;
+      }, 1800);
     } catch (error) {
       console.error(error);
       alert("The universe tripped for a second 😭. Try the YES button again.");
