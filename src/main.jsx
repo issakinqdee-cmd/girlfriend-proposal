@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from "./firebase";
 import "./styles.css";
 
 const GENESIS_URL = "https://ourgenesis-six.vercel.app/";
 const MY_UID = "cymFAhjKyRPg66o26ppFtb7QhVO2";
-const WHATSAPP_NUMBER = "26776536857";
 
 const commitments = [
   ["I choose you", "Intentionally. Fully. Not halfway."],
@@ -45,7 +42,6 @@ function Confetti() {
 
 function App() {
   const [accepted, setAccepted] = useState(false);
-  const [saving, setSaving] = useState(false);
   const [copied, setCopied] = useState(false);
   const [time, setTime] = useState(0);
   const [reason, setReason] = useState(reasons[0]);
@@ -61,32 +57,11 @@ function App() {
   const nextReason = () => setReason(reasons[Math.floor(Math.random() * reasons.length)]);
   const nextDate = () => setDateIndex((v) => (v + 1) % dateIdeas.length);
 
-  const sayYes = async () => {
-    setSaving(true);
-    try {
-      await addDoc(collection(db, "proposal_responses"), {
-        proposal: "girlfriend",
-        answer: "yes",
-        createdAt: serverTimestamp(),
-        source: window.location.href,
-        userAgent: navigator.userAgent
-      });
-
-      setAccepted(true);
-
-      const message = "💕 SHE SAID YES!!!\n\nYour girlfriend has officially accepted the proposal. 😂❤️\n\nGenesis setup is next.";
-      const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-
-      setTimeout(() => {
-        window.location.href = GENESIS_URL;
-      }, 1800);
-    } catch (error) {
-      console.error(error);
-      alert("The universe tripped for a second 😭. Try the YES button again.");
-    } finally {
-      setSaving(false);
-    }
+  const sayYes = () => {
+    setAccepted(true);
+    setTimeout(() => {
+      window.location.href = GENESIS_URL;
+    }, 1800);
   };
 
   const copyUid = async () => {
@@ -165,7 +140,7 @@ function App() {
             <div className="spark">✦</div>
             <p>Okay. Enough legal nonsense.</p>
             <h2>Will you be<br /><em>my girlfriend?</em></h2>
-            <div className="actions"><button className="yes" onClick={sayYes} disabled={saving}>{saving ? "Saving our moment..." : "YES. ♡"}</button></div>
+            <div className="actions"><button className="yes" onClick={sayYes}>YES. ♡</button></div>
             <p className="micro">No pressure. Your answer should be yours.</p>
           </section>
           <footer>made with entirely too much affection · {time % 2 ? "♡" : "✦"}</footer>
