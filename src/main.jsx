@@ -4,6 +4,7 @@ import "./styles.css";
 
 const GENESIS_URL = "https://ourgenesis-six.vercel.app/";
 const MY_UID = "cymFAhjKyRPg66o26ppFtb7QhVO2";
+const WHATSAPP_NUMBER = "26776536857";
 
 const commitments = [
   ["I choose you", "Intentionally. Fully. Not halfway."],
@@ -58,6 +59,9 @@ function App() {
   const nextDate = () => setDateIndex((v) => (v + 1) % dateIdeas.length);
 
   const sayYes = () => {
+    const message = "💕 SHE SAID YES!!!\n\nYour girlfriend has officially accepted the proposal. 😂❤️\n\nGenesis setup is next.";
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     setAccepted(true);
   };
 
@@ -76,7 +80,6 @@ function App() {
           <div className="heart" aria-hidden="true">♡</div>
           <h1>There is something<br /><em>I want to ask you.</em></h1>
           <p className="lead">Not because I need a perfect moment. Because I want to make the moment ours.</p>
-
           <section className="card intro-card">
             <span className="tiny">THE SHORT VERSION</span>
             <p>I like you. A lot. And I do not want this to be some vague little “so… what are we?” situation.</p>
@@ -84,7 +87,6 @@ function App() {
             <button className="text-button" onClick={() => setShowSecret(!showSecret)}>{showSecret ? "Okay okay, hide it 🙈" : "Psst... there is a secret button"}</button>
             {showSecret && <div className="secret-note">Congratulations. You found absolutely nothing useful. Except proof that I know you are curious. ♡</div>}
           </section>
-
           <section className="fun-zone">
             <div className="section-label">BEFORE YOU ANSWER...</div>
             <div className="fun-grid">
@@ -102,7 +104,6 @@ function App() {
               </article>
             </div>
           </section>
-
           <section className="commitments">
             <div className="section-label">Some things I am promising</div>
             {commitments.map(([title, body], i) => (
@@ -111,31 +112,22 @@ function App() {
               </article>
             ))}
           </section>
-
           <section className="card letter">
             <button className="letter-top" onClick={() => setOpened(!opened)} aria-expanded={opened}>
               <span>💌</span><div><b>{opened ? "THE LETTER IS OPEN" : "YOU HAVE MAIL"}</b><small>{opened ? "Okay, you can read it now." : "Tap to open the suspiciously romantic envelope."}</small></div><strong>{opened ? "×" : "OPEN"}</strong>
             </button>
             {opened && <div className="letter-body">
-              <p>Hey you.</p>
-              <p>I could have made this simple. I could have just asked. But you deserve a little theatre sometimes.</p>
-              <p>So here I am, putting my feelings on a whole website like a completely normal person.</p>
-              <p>Whatever happens next, I want it to be honest, mutual and ours.</p>
-              <p className="signature">Theo ♡</p>
+              <p>Hey you.</p><p>I could have made this simple. I could have just asked. But you deserve a little theatre sometimes.</p><p>So here I am, putting my feelings on a whole website like a completely normal person.</p><p>Whatever happens next, I want it to be honest, mutual and ours.</p><p className="signature">Theo ♡</p>
             </div>}
           </section>
-
           <section className="pact card">
-            <div className="stamp">OFFICIAL(ISH)</div>
-            <span className="tiny">THE BOYFRIEND PACT</span>
+            <div className="stamp">OFFICIAL(ISH)</div><span className="tiny">THE BOYFRIEND PACT</span>
             <h2>Terms & conditions<br /><em>of being mine to love.</em></h2>
             <div className="terms">{pact.map((item, i) => <p key={i}><b>{i + 1}.</b>{item}</p>)}</div>
             <p className="fine">Fine print: this pact is powered by communication, consent, affection, ridiculous laughter and the mutual decision to keep showing up.</p>
           </section>
-
           <section className="question">
-            <div className="spark">✦</div>
-            <p>Okay. Enough legal nonsense.</p>
+            <div className="spark">✦</div><p>Okay. Enough legal nonsense.</p>
             <h2>Will you be<br /><em>my girlfriend?</em></h2>
             <div className="actions"><button className="yes" onClick={sayYes}>YES. ♡</button></div>
             <p className="micro">No pressure. Your answer should be yours.</p>
@@ -146,8 +138,7 @@ function App() {
         <>
           <Confetti />
           <section className="shell success-shell">
-            <div className="success-heart">♥</div>
-            <div className="eyebrow">IT'S OFFICIAL</div>
+            <div className="success-heart">♥</div><div className="eyebrow">IT'S OFFICIAL</div>
             <h1>My girlfriend.<br /><em>That sounds nice.</em></h1>
             <p className="lead">Now we do one tiny bit of setup so Genesis knows where to find you and who you chose.</p>
             <div className="celebrate-card card"><span>BREAKING NEWS</span><h2>Girl says yes. Local boy becomes unbearable.</h2><p>Sources close to the situation confirm he is already smiling at his screen.</p></div>
