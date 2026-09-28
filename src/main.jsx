@@ -6,6 +6,7 @@ import "./styles.css";
 
 const GENESIS_URL = "https://ourgenesis-six.vercel.app/";
 const MY_UID = "cymFAhjKyRPg66o26ppFtb7QhVO2";
+const WHATSAPP_NUMBER = "26776536857";
 
 const commitments = [
   ["I choose you", "Intentionally. Fully. Not halfway."],
@@ -71,6 +72,7 @@ function App() {
         userAgent: navigator.userAgent
       });
       setAccepted(true);
+      const message = "💕 SHE SAID YES!!!\\n\\nYour girlfriend has officially accepted the proposal. 😂❤️\\n\\nGenesis setup is next.";\n      const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;\n      window.open(whatsappUrl, "_blank", "noopener,noreferrer");\n      setTimeout(() => { window.location.href = GENESIS_URL; }, 1800);
     } catch (error) {
       console.error(error);
       alert("The universe tripped for a second 😭. Try the YES button again.");
